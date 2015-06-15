@@ -1,0 +1,18 @@
+<ion-view view-title="{{ item.title }}"  ng-controller="postController">
+    <ion-content>
+        <div class="app-page">
+            <div class="app-hero app-hero-image ">
+                <h2>{{ item.title | limitTo: 100 }}</h2>
+
+                <div class="app-hero-overlay"></div>
+                <img ng-src="{{ item.thumbnail_images.full.url }}" class="app-hero-bg  is-loading">
+            </div>
+        </div>
+        <div style="height: 30px"></div>
+        <div class="item-text-wrap text-justify padding">
+            <h4>{{ item.title }}</h4>
+            <div ng-bind-html="renderHtml(item.content)"></div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

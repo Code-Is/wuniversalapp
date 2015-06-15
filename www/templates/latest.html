@@ -1,0 +1,26 @@
+<ion-view view-title="Playlists" var="news">
+    <ion-content>
+        <div class="app-page news-page latest-news" ng-controller="newsController" data-ng-init="getAllRecords()">
+
+            <ion-list modifier="news">
+                <ion-item class="item item-thumbnail-left" modifier="chevron" ng-repeat="item in items track by $index"
+                          ng-click="showPost($index)">
+
+                    <img ng-show="{{ item.thumbnail_images }}" ng-src="{{ item.thumbnail_images.thumbnail.url }}"
+                         class="thumbnail is-loading" img-cache>
+
+                    <h2> {{ item.title | limitTo: 22 }}...</h2>
+                    <i class="icon ion-ios-pricetag-outline"> <span
+                            ng-repeat="cat in item.categories">{{cat.title}} </span> </i>
+
+                    <p>{{ item.excerpt | htmlToPlaintext | limitTo: 60 }}...</p>
+                </ion-item>
+
+            </ion-list>
+            <button class="button button-full button-positive" id="moreButton" rel="home" modifier="large"
+                    should-spin="{{isFetching}}" ng-click="nextPage()"> MORE
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>
